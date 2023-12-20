@@ -3,9 +3,10 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="test_table")
+//@Table(name="user_table")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
     private String name;
