@@ -25,14 +25,14 @@ public class DemoApplication {
 	@Bean
 	CommandLineRunner run(RoleRepository roleRepository, SecureUserRepository secureUserRepository, PasswordEncoder passwordEncode){
 		return args ->{
-			if(roleRepository.findByAuthority("ADMIN").isPresent()) return;
-			Role adminRole = roleRepository.save(new Role("ADMIN"));
-			roleRepository.save(new Role("USER"));
+			if(roleRepository.findByAuthority("LANDLORD").isPresent()) return;
+			Role adminRole = roleRepository.save(new Role("LANDLORD"));
+			roleRepository.save(new Role("TENANT"));
 
 			Set<Role> roles = new HashSet<>();
 			roles.add(adminRole);
 
-			SecureUser admin = new SecureUser(1, "admin@fiserv.com", passwordEncode.encode("password"), "admin", roles);
+			SecureUser admin = new SecureUser(1, "landlord@tenanttrack.com", passwordEncode.encode("password"), "landlord", "lastName", "123456789123","123456789","1234567894",roles);
 
 			secureUserRepository.save(admin);
 		};

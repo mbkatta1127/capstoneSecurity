@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="user_table")
+@Table(name="users")
 public class SecureUser implements UserDetails {
 
     @Id
@@ -23,7 +23,17 @@ public class SecureUser implements UserDetails {
 
     @JsonIgnore
     private String password;
-    private String name;
+    private String first_name;
+
+    private String last_name;
+
+    @JsonIgnore
+    private String account_number;
+
+    @JsonIgnore
+    private String routing_number;
+    private String phone_number;
+
 
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(
@@ -38,20 +48,27 @@ public class SecureUser implements UserDetails {
         this.authorities = new HashSet<Role>();
     }
 
-    public SecureUser(Integer id, String username, String password, String name, Set<Role> authorities) {
+    public SecureUser(Integer id, String username, String password, String first_name, String last_name, String account_number, String routing_number, String phone_number, Set<Role> authorities) {
         super();
         this.id = id;
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.account_number = account_number;
+        this.routing_number = routing_number;
+        this.phone_number = phone_number;
         this.authorities = authorities;
     }
 
-    public SecureUser(String username, String password, String name, Set<Role> authorities) {
-        super();
+    public SecureUser(String username, String password, String first_name, String last_name, String account_number, String routing_number, String phone_number, Set<Role> authorities) {
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.account_number = account_number;
+        this.routing_number = routing_number;
+        this.phone_number = phone_number;
         this.authorities = authorities;
     }
 
@@ -90,12 +107,44 @@ public class SecureUser implements UserDetails {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public String getAccount_number() {
+        return account_number;
+    }
+
+    public void setAccount_number(String account_number) {
+        this.account_number = account_number;
+    }
+
+    public String getRouting_number() {
+        return routing_number;
+    }
+
+    public void setRouting_number(String routing_number) {
+        this.routing_number = routing_number;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     @Override

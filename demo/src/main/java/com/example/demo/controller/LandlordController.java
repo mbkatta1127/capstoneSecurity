@@ -30,10 +30,10 @@ public class LandlordController {
         return landlordService.createLandlord(landlord);
     }
 
-    @GetMapping("/all")
+    /*@GetMapping("/all")
     public List<Landlord> getyAllLandlords() {
         return landlordService.getAllLandlords();
-    }
+    }*/
 
 
 
